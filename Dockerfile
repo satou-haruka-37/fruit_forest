@@ -20,8 +20,11 @@ COPY yarn.lock /app/yarn.lock
 RUN bundle install
 RUN yarn install
 COPY . /app
+
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
+
+RUN bundle exec rails assets:precompile
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0"]
