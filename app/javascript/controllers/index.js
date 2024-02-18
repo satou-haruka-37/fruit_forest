@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import FruitCatcherController from "./fruit_catcher_controller"
+application.register("fruit-catcher", FruitCatcherController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

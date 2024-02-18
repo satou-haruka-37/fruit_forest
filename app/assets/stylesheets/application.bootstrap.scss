@@ -19,3 +19,27 @@ body {
 .custom-text-color {
   color: #424b02;
 }
+
+.game-area {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  border: 1px solid black;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.fruit {
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
