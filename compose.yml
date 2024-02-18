@@ -13,8 +13,6 @@ services:
       DATABASE_URL: "sqlite3:/app/db/development.sqlite3"
     ports:
       - "3000:3000"
-    depends_on:
-      - db
 
 volumes:
   bundle_data:
