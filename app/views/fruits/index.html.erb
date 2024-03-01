@@ -1,5 +1,12 @@
 <div class="d-flex justify-content-center align-items-center">
-  <div data-controller="fruit-catcher">
+  <div data-controller="fruit-catcher"
+       data-fruit-catcher-fruits-images-value="<%= [
+         asset_path('fruit01.webp'),
+         asset_path('fruit02.webp'),
+         asset_path('fruit03.webp'),
+         asset_path('fruit04.webp'),
+         asset_path('fruit05.webp')
+       ].to_json %>">
     <button data-action="click->fruit-catcher#startGame">すた〜と</button>
     <div data-fruit-catcher-target="score" class="score">とくてん: 0</div>
     <div class="game-area" data-fruit-catcher-target="gameArea">
