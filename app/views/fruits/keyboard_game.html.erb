@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div data-controller="keyboard-game"
+       data-keyboard-game-fruits-images-value="<%= [
+         asset_path('fruit01.webp'),
+         asset_path('fruit02.webp'),
+         asset_path('fruit03.webp'),
+         asset_path('fruit04.webp'),
+         asset_path('fruit05.webp')
+       ].to_json %>">
+    <div data-action="click->keyboard-game#startGame" class="btn btn-lg custom-btm text-white">すた〜と</div>
+    <div class="d-flex justify-content-between w-100">
+      <div data-keyboard-game-target="score" class="fs-4">とくてん: 0</div>
+      <div data-keyboard-game-target="timer" class="fs-4">のこり: 30 びょう</div>
+    </div>
+    <div class="game-area" data-keyboard-game-target="gameArea">
+      <%= image_tag('character.webp',
+              alt: 'character',
+              class: 'character',
+              tabindex: '0',
+              'data-keyboard-game-target': 'character',
+              'data-action': 'keydown@window->keyboard-game#moveCharacter') %>
+    </div>
+  </div>
+</div>

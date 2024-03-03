@@ -16,14 +16,24 @@ body {
   background-color: #ced788;
 }
 
+.custom-btm {
+  background-color: #424b02;
+  border-color: #424b02;
+}
+
+.custom-btm:hover {
+  background-color: #6c7a05;
+  border-color: #6c7a05;
+}
+
 .custom-text-color {
   color: #424b02;
 }
 
 .game-area {
   position: relative;
-  width: 600px;
-  height: 400px;
+  width: 1200px;
+  height: 700px;
   border: 1px solid black;
 }
 
@@ -31,13 +41,13 @@ body {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 }
 
 .fruit {
   position: absolute;
   top: 0;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
 }

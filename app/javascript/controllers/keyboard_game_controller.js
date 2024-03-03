@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["character", "gameArea", "score"]
+  static targets = ["character", "gameArea", "score", "timer"]
   static values = {
     score: Number,
     timeLimit: Number,
@@ -10,7 +10,8 @@ export default class extends Controller {
 
   connect() {
     this.scoreValue = 0;
-    this.timeLimitValue = 30; // 例えば、30秒に設定
+    this.timeLimitValue = 30; // 30秒に設定
+    this.timerTarget.textContent = `のこり: ${this.timeLimitValue} びょう`;
   }
 
   startGame() {
@@ -19,11 +20,17 @@ export default class extends Controller {
     this.scoreValue = 0; // 得点をリセット
     this.scoreTarget.textContent = `とくてん: ${this.scoreValue}`;
     this.dropFruits();
+    this.timerTarget.textContent = `のこり: ${this.timeLimitValue} びょう`;
 
-    // タイマーを設定して、30秒後にゲームを終了する
-    setTimeout(() => {
-      this.endGame();
-    }, this.timeLimitValue * 1000);
+    // タイマーを設定して、残り秒数を更新
+    this.timerInterval = setInterval(() => {
+      this.timeLimitValue -= 1;
+      this.timerTarget.textContent = `のこり: ${this.timeLimitValue} びょう`;
+
+      if (this.timeLimitValue <= 0) {
+        this.endGame();
+      }
+    }, 1000);
   }
 
   moveCharacter(event) {
@@ -94,6 +101,7 @@ export default class extends Controller {
   endGame() {
     clearInterval(this.dropFruitsInterval); // 全ての果物の生成を停止
     this.fallIntervals.forEach(interval => clearInterval(interval)); // 各果物の落下を停止
+    clearInterval(this.timerInterval); // タイマーのカウントダウンを停止
 
     alert(`ゲーム終了！ あなたの得点は${this.scoreValue}点です。`);
   }
@@ -104,5 +112,7 @@ export default class extends Controller {
     // キャラクターを初期位置に戻す
     this.characterTarget.style.left = "50%";
     this.scoreTarget.textContent = `とくてん: ${this.scoreValue}`;
+    this.timeLimitValue = 30;
+    this.timerTarget.textContent = `のこり: ${this.timeLimitValue} びょう`;
   }
 }

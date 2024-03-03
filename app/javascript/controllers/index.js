@@ -4,8 +4,11 @@
 
 import { application } from "./application"
 
-import FruitCatcherController from "./fruit_catcher_controller"
-application.register("fruit-catcher", FruitCatcherController)
+import KeyboardGameController from "./keyboard_game_controller"
+application.register("keyboard-game", KeyboardGameController)
+
+import MouseGameController from "./mouse_game_controller"
+application.register("mouse-game", MouseGameController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
