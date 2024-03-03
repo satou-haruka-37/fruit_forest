@@ -10,8 +10,12 @@
     <button data-action="click->fruit-catcher#startGame">すた〜と</button>
     <div data-fruit-catcher-target="score" class="score">とくてん: 0</div>
     <div class="game-area" data-fruit-catcher-target="gameArea">
-      <div data-fruit-catcher-target="character" class="character" tabindex="0"
-          data-action="keydown@window->fruit-catcher#moveCharacter"></div>
+      <%= image_tag('character.webp',
+              alt: 'character',
+              class: 'character',
+              tabindex: '0',
+              'data-fruit-catcher-target': 'character',
+              'data-action': 'keydown@window->fruit-catcher#moveCharacter') %>
     </div>
   </div>
 </div>

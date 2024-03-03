@@ -59,17 +59,17 @@ export default class extends Controller {
       fruit.style.left = `${Math.random() * (this.gameAreaTarget.offsetWidth - 50)}px`; // フルーツの初期位置をランダムに設定
       fruit.style.top = "0px"; // トップからの位置を0に設定
       this.gameAreaTarget.appendChild(fruit);
-  
+
       const fallInterval = setInterval(() => {
         fruit.style.top = `${fruit.offsetTop + 5}px`;
-  
+
         // 果物が床またはキャラクターに接触したかチェック
         if (fruit.offsetTop + fruit.offsetHeight >= this.gameAreaTarget.offsetHeight || this.checkCatch(fruit)) {
           clearInterval(fallInterval);
           fruit.remove();
         }
       }, 50);
-  
+
       this.fallIntervals.push(fallInterval);
     }, 1000);
   }
