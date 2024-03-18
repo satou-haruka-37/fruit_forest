@@ -39,12 +39,12 @@ export default class extends Controller {
       case "ArrowLeft":
       case "h":
         // 左に移動
-        this.characterTarget.style.left = `${Math.max(0, this.characterTarget.offsetLeft - 10)}px`;
+        this.characterTarget.style.left = `${Math.max(0, this.characterTarget.offsetLeft - 30)}px`;
         break;
       case "ArrowRight":
       case "l":
         // 右に移動
-        this.characterTarget.style.left = `${Math.min(this.gameAreaTarget.offsetWidth - this.characterTarget.offsetWidth, this.characterTarget.offsetLeft + 10)}px`;
+        this.characterTarget.style.left = `${Math.min(this.gameAreaTarget.offsetWidth - this.characterTarget.offsetWidth, this.characterTarget.offsetLeft + 30)}px`;
         break;
     }
   }
