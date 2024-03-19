@@ -22,5 +22,25 @@
               'data-keyboard-game-target': 'character',
               'data-action': 'keydown@window->keyboard-game#moveCharacter') %>
     </div>
+
+    <!-- モーダル -->
+    <div class="modal fade" id="gameResultModal" tabindex="-1" aria-labelledby="gameResultModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="gameResultModalLabel">げーむしゅうりょう</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="gameResult">🌳あなたのとくてんは<span id="finalScore"></span>てんです🎉</p>
+          </div>
+          <div class="modal-footer">
+            <img src="<%= asset_path('x.webp') %>" class="rounded-3" style="width: 40px; height: 40px; cursor: pointer;" data-action="click->keyboard-game#tweetScore" data-keyboard-game-base-url="<%= request.base_url %>" alt="しぇあ">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">もういちどあそぶ</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

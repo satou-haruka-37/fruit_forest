@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { Modal } from "bootstrap"
 
 export default class extends Controller {
   static targets = ["character", "gameArea", "score", "timer"]
@@ -103,7 +104,19 @@ export default class extends Controller {
     this.fallIntervals.forEach(interval => clearInterval(interval)); // 各果物の落下を停止
     clearInterval(this.timerInterval); // タイマーのカウントダウンを停止
 
-    alert(`ゲーム終了！ あなたの得点は${this.scoreValue}点です。`);
+    const modalElement = document.getElementById('gameResultModal');
+    const modal = new Modal(modalElement);
+    this.element.querySelector('#finalScore').textContent = this.scoreValue;
+    modal.show();
+  }
+
+  tweetScore(event) {
+    const baseUrl = event.currentTarget.dataset.keyboardGameBaseUrl;
+    const tweetText = `${this.scoreValue}点ぶんのくだものを食べたよ🍎`;
+    const hashtags = 'くだものの森';
+    const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(baseUrl)}&text=${encodeURIComponent(tweetText)}&hashtags=${encodeURIComponent(hashtags)}`;
+
+    window.open(tweetUrl, '_blank');
   }
 
   resetGameArea() {
