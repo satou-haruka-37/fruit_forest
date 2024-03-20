@@ -1,12 +1,13 @@
 <div class="d-flex justify-content-center align-items-center">
   <div data-controller="keyboard-game"
-       data-keyboard-game-fruits-images-value="<%= [
-         asset_path('fruit01.webp'),
-         asset_path('fruit02.webp'),
-         asset_path('fruit03.webp'),
-         asset_path('fruit04.webp'),
-         asset_path('fruit05.webp')
-       ].to_json %>">
+     data-keyboard-game-fruits-images-value="<%= [
+       { image: asset_path('fruit01.webp'), score: 1 },
+       { image: asset_path('fruit02.webp'), score: 3 },
+       { image: asset_path('fruit03.webp'), score: 2 },
+       { image: asset_path('fruit04.webp'), score: 4 },
+       { image: asset_path('fruit05.webp'), score: 5 }
+     ].to_json %>">
+
     <div class="text-center">
       <div data-action="click->keyboard-game#startGame" class="btn btn-lg custom-btm text-white mt-2">げ〜むすた〜と</div>
     </div>

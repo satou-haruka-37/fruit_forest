@@ -47,10 +47,11 @@ export default class extends Controller {
     this.dropFruitsInterval = setInterval(() => {
       const fruit = document.createElement("div");
       fruit.classList.add("fruit");
-      // ランダムなフルーツの画像を選択
-      const randomImage = this.fruitsImagesValue[Math.floor(Math.random() * this.fruitsImagesValue.length)];
+      // ランダムなフルーツのオブジェクトを選択
+      const randomFruitObject = this.fruitsImagesValue[Math.floor(Math.random() * this.fruitsImagesValue.length)];
       // フルーツに画像を設定
-      fruit.style.backgroundImage = `url(${randomImage})`;
+      fruit.style.backgroundImage = `url(${randomFruitObject.image})`;
+      fruit.dataset.score = randomFruitObject.score; // HTML要素に点数をデータ属性として設定
       fruit.style.backgroundSize = "contain";
       fruit.style.backgroundRepeat = "no-repeat";
       fruit.style.backgroundColor = "transparent"; // 背景色を透明に設定
@@ -72,7 +73,7 @@ export default class extends Controller {
       }, 50);
 
       this.fallIntervals.push(fallInterval);
-    }, 1000);
+    }, 900);
   }
 
   checkCatch(fruit) {
@@ -85,7 +86,8 @@ export default class extends Controller {
     if (fruit.offsetTop + fruit.offsetHeight >= this.characterTarget.offsetTop &&
         fruitRight >= characterLeft && fruitLeft <= characterRight) {
       console.log("キャッチした！");
-      this.scoreValue += 1; // 得点を加算
+      const fruitScore = parseInt(fruit.dataset.score, 10); // データ属性から点数を取得
+      this.scoreValue += fruitScore; // 得点を加算
       this.scoreTarget.textContent = `とくてん: ${this.scoreValue}`; // スコアを表示
       return true;
     }
