@@ -61,3 +61,4 @@ group :development do
   # gem "spring"
 end
 
+gem "meta-tags"
