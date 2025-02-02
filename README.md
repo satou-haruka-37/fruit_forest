@@ -1,4 +1,4 @@
 # くだものの森
 業務で使用する Stimulus の練習のために作成したミニゲームアプリです。
 
-Docker、Bootstrapにも触れてみました。
+Docker、Bootstrap　にも触れてみました。
